@@ -25,15 +25,23 @@
  */
 
 const inputEl = document.querySelector('#validation-input');
-inputEl.addEventListener('blur', onInput);
 
-function onInput(event){
-    if (event.currentTarget.value.length === Number(inputEl.dataset.length)) {
-        inputEl.classList.add('valid');
-    inputEl.classList.remove('invalid')
-} 
-    else {
-        inputEl.classList.add('invalid');
-        inputEl.classList.remove('valid')
-        }
-}
+
+// function onInput(event){
+//     if (event.currentTarget.value.length === Number(inputEl.dataset.length)) {
+//         inputEl.classList.add('valid');
+//     inputEl.classList.remove('invalid')
+// }
+//     else {
+//         inputEl.classList.add('invalid');
+//         inputEl.classList.remove('valid')
+//         }
+// }
+
+/* 2 тернарник*/
+const onInput = (event) => {
+  event.currentTarget.value.length === Number(inputEl.dataset.length)
+    ? inputEl.setAttribute('class', 'valid')
+    : inputEl.setAttribute('class', 'invalid');
+};
+inputEl.addEventListener('blur', onInput);
